@@ -2,7 +2,13 @@ import { ArrayService } from "./app-service";
 
 export class ArrayComponent implements ArrayService {
 
-    constructor() {}
+    public arrayReplace(myArray:any):Array<number>{
+        for(var i=0;i<myArray.length;i++){
+            if(myArray[i]%3===0)
+                myArray[i] = 5;
+        }
+        return myArray;
+    }
 
     public arrayMultiply(myArray: number[]) : Array<Number> {
         let temp = [], j=0;
@@ -13,17 +19,6 @@ export class ArrayComponent implements ArrayService {
             }              
         }
         return temp
-    }
-
-    public arraySeparate(myArray: any) : Array<string>{
-        let str = [], j=0;
-        for(var i=0;i<myArray.length;i++){
-            if(typeof(myArray[i]) === "string"){
-                str[j] = myArray[i];
-                j++;
-            }              
-        }
-        return str;
     }
 
     public arraySplit(str:string) : Array<number>{
@@ -49,13 +44,19 @@ export class ArrayComponent implements ArrayService {
         return myArray;
     }
 
-    public arrayReplace(myArray:any):Array<number>{
+    public arraySeparate(myArray: any) : Array<string>{
+        let str = [], j=0;
         for(var i=0;i<myArray.length;i++){
-            if(myArray[i]%3===0)
-                myArray[i] = 5;
+            if(typeof(myArray[i]) === "string"){
+                str[j] = myArray[i];
+                j++;
+            }              
         }
-        return myArray;
+        return str;
     }
+
+    constructor() {}
+
 }
 
 let myArray: number[] = [34, 45, 60, 23, 13, 25, 70];
@@ -65,6 +66,3 @@ console.log(array.arrayMultiply(myArray));
 console.log(array.arraySeparate(myArray));
 console.log(array.arraySort(myArray));
 console.log(array.arrayReplace(myArray));
-
-
-
